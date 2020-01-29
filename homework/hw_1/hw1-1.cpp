@@ -2,18 +2,18 @@
  * Abstract: This program reads data from file and displays them in formatted manner
  * Author: Edgaras Slezas
  * Email: eslezas@csumb.edu
- * Estimate: 3h
+ * Estimate: 5h
  * Date: 01/24/2020
 */
 
 #include <iostream>
 #include <fstream>
-#include <array>
+#include <climits>
 using namespace std;
 
 int main() {
 
-    int max = 9999999;
+    int max = INT_MAX;
 
     cout << "Enter input file name: ";
     string file_name;
@@ -37,8 +37,6 @@ int main() {
 
     int values[30];
     int output[30];
-    int test;
-	  int sum = 0;
 
     // Read a value from the file and assign it to array value
     for (int i=0; i < size; i++) {
@@ -50,27 +48,59 @@ int main() {
       }
     }
 
+    for (int i = 0; i < 30; i++){
+      values[i] = INT_MAX;
+    }
+
+    int newSize = 0;
+
     for (int i = 0; i < size; i++) {
 
-
       for (int n = 0; n < size; n++) {
-        if (output[i] != values[n]) {
-          values[i] = output[i];
-        }
-      }
 
+        if (values[n] != INT_MAX) {
+          if (output[i] == values[n]) {
+
+            break;
+          }
+
+        } else {
+          values[n] = output[i];
+          newSize++;
+          break;
+        }
+
+        }
 
     }
+
+
+    int counter[30] = {0};
+
+    for (int i = 0; i < newSize; i++) {
+      for (int n = 0; n < size; n++) {
+
+        if (values[i] == output[n]) {
+          counter[i]++;
+        }
+
+
+        }
+
+    }
+
+
+
 
     cout << "Min number: " << max << endl;
     cout << endl;
 
-    cout << "Number" << endl;
+    cout << "Number   Count" << endl;
 
     // print all numbers
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < newSize; i++) {
 
-      cout << output[i] << endl;
+      cout << values[i] << "        " <<  counter[i] << endl;
     }
 
 
