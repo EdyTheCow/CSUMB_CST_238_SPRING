@@ -301,7 +301,7 @@ void Automat::enqueue(Drink d) {
     myDrink[myDrinkBack] = d;
     myDrinkBack = newBack;
   } else {
-    cerr << "*** Automat is full -- can't add new drink ***\n";
+    cerr << "ERROR: Automat is full - can't add new drink\n";
   }
 }
 
@@ -309,7 +309,7 @@ Drink Automat::frontDrink() {
   if ( !emptyDrink() ) {
     return (myDrink[myDrinkFront]);
   } else {
-    cerr << "*** Automat is empty -- returning garbage value ***\n";
+    cerr << "ERROR: Automat is empty - returning garbage value\n";
     Drink garbage;
     return garbage;
   }
@@ -319,7 +319,7 @@ void Automat::dequeueDrink() {
   if ( !emptyDrink() ) {
     myDrinkFront = (myDrinkFront + 1) % AUTOMAT_MAX;
   } else {
-    cerr << "*** Automat is empty -- can't remove a drink ***\n";
+    cerr << "ERROR: Automat is empty - can't remove a drink\n";
   }
 }
 
@@ -364,7 +364,7 @@ void Automat::enqueue(Food f) {
     myFood[myFoodBack] = f;
     myFoodBack = newBack;
   } else {
-    cerr << "*** Automat is full -- can't add new food ***";
+    cerr << "ERROR: Automat is full - can't add new food";
   }
 }
 
@@ -372,7 +372,7 @@ Food Automat::frontFood() {
   if ( !emptyDrink() ) {
     return (myFood[myFoodFront]);
   } else {
-    cerr << "*** Automat is empty -- returning garbage value ***\n";
+    cerr << "ERROR: Automat is empty - returning garbage value\n";
     Food garbage;
     return garbage;
   }
@@ -382,7 +382,7 @@ void Automat::dequeueFood() {
   if ( !emptyFood() ) {
     myFoodFront = (myFoodFront + 1) % AUTOMAT_MAX;
   } else {
-    cerr << "*** Automat is empty -- can't remove food ***\n";
+    cerr << "ERROR: Automat is empty - can't remove food\n";
   }
 }
 
@@ -486,7 +486,7 @@ void Order::push(Drink d) {
     myDrink[myDrinkTop] = d;
 
   } else {
-    cerr << "*** Order is full -- can't add new drinks ***\n";
+    cerr << "ERROR: Order is full - can't add new drinks\n";
     return;
   }
 }
@@ -495,7 +495,7 @@ Drink Order::topDrink() {
   if ( !emptyDrink()) {
     return (myDrink[myDrinkTop]);
   } else {
-    cerr << "*** Order is empty -- returning garbage value ***\n";
+    cerr << "ERROR: Order is empty - returning garbage value\n";
     Drink garbage;
     return garbage;
   }
@@ -505,7 +505,7 @@ void Order::popDrink() {
   if ( !emptyDrink()) {
     myDrinkTop--;
   } else {
-    cerr << "*** Order is empty -- can't remove a drink ***\n";
+    cerr << "ERROR: Order is empty - can't remove a drink\n";
   }
 }
 
@@ -544,7 +544,7 @@ void Order::push(Food f) {
     myFood[myFoodTop] = f;
 
   } else {
-    cerr << "*** Order is full -- can't add new food ***\n";
+    cerr << "ERROR: Order is full - can't add new food\n";
     return;
   }
 }
@@ -553,7 +553,7 @@ Food Order::topFood() {
   if ( !emptyFood()) {
     return (myFood[myFoodTop]);
   } else {
-    cerr << "*** Order is empty -- returning garbage value ***\n";
+    cerr << "ERROR: Order is empty - returning garbage value\n";
     Food garbage;
     return garbage;
   }
@@ -563,7 +563,7 @@ void Order::popFood() {
   if ( !emptyFood()) {
     myFoodTop--;
   } else {
-    cerr << "*** Order is empty -- can't remove a food ***\n";
+    cerr << "ERROR: Order is empty - can't remove a food\n";
   }
 }
 
